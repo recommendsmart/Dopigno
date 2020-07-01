@@ -25,7 +25,8 @@
         "drupal/slick_extras": "^1.0@RC",
         "drupal/slick_paragraphs": "^2.0",
         "drupal/slick_views": "^2.3",
-        "drupal/video_embed_field": "^2.4"
+        "drupal/video_embed_field": "^2.4",
+        "drupal/zinble": "^2.0"
     },
     "conflict": {
         "drupal/drupal": "*"
