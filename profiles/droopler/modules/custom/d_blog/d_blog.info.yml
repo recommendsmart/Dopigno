@@ -2,6 +2,7 @@ name: d_blog
 description: 'Adds a blog to Droopler.'
 type: module
 core: 8.x
+core_version_requirement: ^8 || ^9
 dependencies:
   - block
   - content_translation
@@ -42,18 +43,19 @@ dependencies:
   - responsive_image
   - simple_sitemap
   - svg_image
+  - svg_image_responsive
   - taxonomy
   - text
   - tvi
   - user
   - views
-# version: 8.x-2.0
+# version: DROOPLER_VERSION
 package: Droopler
 'interface translation project': d_blog
 'interface translation server pattern': profiles/contrib/droopler/modules/custom/d_blog/translations/%project-%version.%language.po
 core_incompatible: false
 
-# Information added by Drupal.org packaging script on 2020-05-05
-version: '8.x-2.0'
+# Information added by Drupal.org packaging script on 2020-07-13
+version: '8.x-2.1'
 project: 'droopler'
-datestamp: 1588686639
+datestamp: 1594618044

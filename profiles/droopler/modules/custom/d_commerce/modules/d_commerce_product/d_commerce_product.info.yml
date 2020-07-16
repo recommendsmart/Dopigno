@@ -1,0 +1,31 @@
+name: d_commerce_product (experimental)
+core: 8.x
+core_version_requirement: ^8 || ^9
+description: 'Provides a droopler product type.'
+type: module
+dependencies:
+  - block
+  - commerce_order
+  - commerce_product
+  - entity_reference_revisions
+  - d_commerce
+  - field
+  - image
+  - media
+  - media_library
+  - options
+  - paragraphs
+  - path
+  - pathauto
+  - state_machine
+  - taxonomy
+  - text
+  - views
+package: Droopler
+# version: DROOPLER_VERSION
+core_incompatible: false
+
+# Information added by Drupal.org packaging script on 2020-07-13
+version: '8.x-2.1'
+project: 'droopler'
+datestamp: 1594618044

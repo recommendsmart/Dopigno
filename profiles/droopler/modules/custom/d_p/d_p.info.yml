@@ -1,5 +1,6 @@
 name: d_p
 core: 8.x
+core_version_requirement: ^8 || ^9
 description: 'Provides base paragraph features.'
 type: module
 dependencies:
@@ -19,11 +20,11 @@ dependencies:
   - paragraphs
   - text
 package: Droopler
-# version: 8.x-2.0
+# version: DROOPLER_VERSION
 libraries:
   - d_p/d_p_with_price
 
-# Information added by Drupal.org packaging script on 2020-05-05
-version: '8.x-2.0'
+# Information added by Drupal.org packaging script on 2020-07-13
+version: '8.x-2.1'
 project: 'droopler'
-datestamp: 1588686639
+datestamp: 1594618044

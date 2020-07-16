@@ -4,7 +4,7 @@ defaults[projects][subdir] = contrib
 
 projects[admin_toolbar][version] = 2
 projects[advagg][version] = 4
-projects[better_exposed_filters][version] = 3
+projects[better_exposed_filters][version] = 4
 projects[checklistapi][version] = 1
 projects[colorbox][version] = 1
 projects[config_update][version] = 1
@@ -15,7 +15,7 @@ projects[entity_reference_revisions][version] = 1
 projects[facets][version] = 1
 projects[features][version] = 3
 projects[field_group][version] = 3
-projects[geysir][version] = 1
+projects[geysir] = 1
 projects[google_analytics][version] = 2
 projects[google_tag][version] = 1
 projects[lazy][version] = 3

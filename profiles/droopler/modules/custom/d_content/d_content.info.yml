@@ -1,11 +1,13 @@
 name: d_content
 type: module
 core: 8.x
+core_version_requirement: ^8 || ^9
 description: 'Provides "content page" node type.'
 dependencies:
   - block
   - block_content
   - content_translation
+  - ckeditor
   - d_media
   - d_p
   - d_p_banner
@@ -24,6 +26,7 @@ dependencies:
   - d_p_text_paged
   - d_p_text_with_bckg
   - d_p_tiles
+  - editor
   - entity_reference_revisions
   - field
   - field_group
@@ -45,10 +48,10 @@ dependencies:
   - user
   - views
 package: Droopler
-# version: 8.x-2.0
+# version: DROOPLER_VERSION
 core_incompatible: false
 
-# Information added by Drupal.org packaging script on 2020-05-05
-version: '8.x-2.0'
+# Information added by Drupal.org packaging script on 2020-07-13
+version: '8.x-2.1'
 project: 'droopler'
-datestamp: 1588686639
+datestamp: 1594618044

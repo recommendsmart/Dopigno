@@ -59,6 +59,7 @@
 
 // Menu Frontend
 //
+@import 'menu/menu_variables';
 @import 'menu/menu_design';
 @import 'menu/menu_mixins';
 @import 'menu/menu_layout';
@@ -71,6 +72,7 @@
 @import 'components/d_media';
 @import 'components/d_p_banner';
 @import 'components/d_p_carousel';
+@import 'components/d_p_cta_link';
 @import 'components/d_p_counters';
 @import 'components/d_p_form';
 @import 'components/d_p_gallery';
