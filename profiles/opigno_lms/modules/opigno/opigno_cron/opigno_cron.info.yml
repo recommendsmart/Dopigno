@@ -1,0 +1,14 @@
+name: Opigno cron
+type: module
+description: Opigno cron settings.
+core: 8.x
+package: Opigno
+dependencies:
+  - ultimate_cron:ultimate_cron
+  - config_rewrite:config_rewrite
+  - queue_ui:queue_ui
+  - drupal:automated_cron
+# Information added by Drupal.org packaging script on 2020-08-12
+version: '8.x-1.0'
+project: 'opigno_cron'
+datestamp: 1597244755

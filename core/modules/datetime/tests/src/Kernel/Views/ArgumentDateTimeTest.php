@@ -48,7 +48,7 @@ class ArgumentDateTimeTest extends DateTimeHandlerTestBase {
   /**
    * Test year argument.
    *
-   * @see \Drupal\datetime\Plugin\views\argument\YearDate
+   * @see \Drupal\datetime\Plugin\views\argument\YearDateRange
    */
   public function testDatetimeArgumentYear() {
     $view = Views::getView('test_argument_datetime');
@@ -91,7 +91,7 @@ class ArgumentDateTimeTest extends DateTimeHandlerTestBase {
   /**
    * Test month argument.
    *
-   * @see \Drupal\datetime\Plugin\views\argument\MonthDate
+   * @see \Drupal\datetime\Plugin\views\argument\MonthDateRange
    */
   public function testDatetimeArgumentMonth() {
     $view = Views::getView('test_argument_datetime');

@@ -179,29 +179,42 @@ function views_views_data() {
     }
   }
 
-  // Field modules can implement hook_field_views_data() to override the default
-  // behavior for adding fields.
-  $module_handler = \Drupal::moduleHandler();
-
   $entity_type_manager = \Drupal::entityTypeManager();
   if ($entity_type_manager->hasDefinition('field_storage_config')) {
     /** @var \Drupal\field\FieldStorageConfigInterface $field_storage */
     foreach ($entity_type_manager->getStorage('field_storage_config')->loadMultiple() as $field_storage) {
-      if (_views_field_get_entity_type_storage($field_storage)) {
-        $result = (array) $module_handler->invoke($field_storage->getTypeProvider(), 'field_views_data', [$field_storage]);
-        if (empty($result)) {
-          $result = views_field_default_views_data($field_storage);
-        }
-        $module_handler->alter('field_views_data', $result, $field_storage);
-
-        if (is_array($result)) {
-          $data = NestedArray::mergeDeep($result, $data);
-        }
-      }
+      views_collect_field_view_data($field_storage, $data);
     }
   }
 
   return $data;
+}
+
+/**
+ * Collects view data for the specified Field module field.
+ *
+ * @param \Drupal\field\FieldStorageConfigInterface $field_storage
+ *   The field storage definition.
+ * @param array $data
+ *   A reference to a view data array.
+ *
+ * @internal
+ */
+function views_collect_field_view_data(FieldStorageConfigInterface $field_storage, array &$data) {
+  // Field modules can implement hook_field_views_data() to override the default
+  // behavior for adding fields.
+  $module_handler = \Drupal::moduleHandler();
+  if (_views_field_get_entity_type_storage($field_storage)) {
+    $result = (array) $module_handler->invoke($field_storage->getTypeProvider(), 'field_views_data', [$field_storage]);
+    if (empty($result)) {
+      $result = views_field_default_views_data($field_storage);
+    }
+    $module_handler->alter('field_views_data', $result, $field_storage);
+
+    if (is_array($result)) {
+      $data = NestedArray::mergeDeep($result, $data);
+    }
+  }
 }
 
 /**
@@ -369,8 +382,9 @@ function views_field_default_views_data(FieldStorageConfigInterface $field_stora
   $untranslatable_configs = [];
   $untranslatable_config_bundles = [];
 
+  $entity_field_manager = \Drupal::service('entity_field.manager');
   foreach ($bundles_names as $bundle) {
-    $fields[$bundle] = FieldConfig::loadByName($entity_type->id(), $bundle, $field_name);
+    $fields[$bundle] = $entity_field_manager->getFieldDefinitions($entity_type->id(), $bundle)[$field_name];
   }
   foreach ($fields as $bundle => $config_entity) {
     if (!empty($config_entity)) {

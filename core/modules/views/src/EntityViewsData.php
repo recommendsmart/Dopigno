@@ -11,9 +11,12 @@ use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\Sql\SqlEntityStorageInterface;
 use Drupal\Core\Entity\Sql\TableMappingInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslationInterface;
+use Drupal\field\BaseFieldStorageConfigWrapper;
+use Drupal\field\Entity\FieldStorageConfigWrapper;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -352,6 +355,19 @@ class EntityViewsData implements EntityHandlerInterface, EntityViewsDataInterfac
     array_walk($data, function (&$table_data) use ($entity_type_id) {
       $table_data['table']['entity type'] = $entity_type_id;
     });
+
+    // Add any bundle fields defined in code.
+    // @todo Here we are assuming that hard-coded bundle field definitions
+    //   extend BaseFieldDefinition, which is a common case. Revisit this logic
+    //   in https://www.drupal.org/project/drupal/issues/2930736.
+    $storage_definitions = $this->entityManager->getFieldStorageDefinitions($this->entityType->id());
+    foreach (BaseFieldStorageConfigWrapper::getFieldBundles($this->entityType->id()) as $field_name => $bundles) {
+      $storage_definition = isset($storage_definitions[$field_name]) ? $storage_definitions[$field_name] : NULL;
+      if (!$storage_definition->isBaseField() && $storage_definition instanceof BaseFieldDefinition) {
+        $field_storage = BaseFieldStorageConfigWrapper::createFromBaseFieldDefinition($storage_definition);
+        views_collect_field_view_data($field_storage, $data);
+      }
+    }
 
     return $data;
   }
