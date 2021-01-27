@@ -31,14 +31,3 @@ if (isset($_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR']) && file_exists($_SERVER['D
   require $_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR'] . '/loc_Dopigno_dd.inc';
 }
 // </DDSETTINGS>
-$databases['default']['default'] = array (
-  'database' => 'Dopigno',
-  'username' => 'drupaluser',
-  'password' => '',
-  'prefix' => '',
-  'host' => '127.0.0.1',
-  'port' => '33067',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
-);
-$settings['hash_salt'] = 'au-r1LEUQvnpegpN1679Ps4rHhu2SinHqHcIFH6Z3e5Id-r6DMvPDM4yaDqCaimeUvMILUghyw';
