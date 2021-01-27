@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '3d95068fa986dbae211913931bfd6ebcb067159d',
+    'reference' => '95e85b785bef0b018b01b0387795f8ba654e4ef4',
     'name' => 'drupal/legacy-project',
   ),
   'versions' => 
@@ -713,7 +713,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '3d95068fa986dbae211913931bfd6ebcb067159d',
+      'reference' => '95e85b785bef0b018b01b0387795f8ba654e4ef4',
     ),
     'drupal/link' => 
     array (
@@ -1060,6 +1060,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'ade6887fd9bd74177769645ab5c474824f8a418a',
+    ),
+    'firebase/php-jwt' => 
+    array (
+      'pretty_version' => 'v5.2.0',
+      'version' => '5.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'feb0e820b8436873675fd3aca04f3728eb2185cb',
     ),
     'guzzlehttp/guzzle' => 
     array (

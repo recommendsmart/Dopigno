@@ -21,6 +21,7 @@
         "drupal/core-project-message": "^8.8",
         "drupal/core-recommended": "^8.8",
         "drupal/core-vendor-hardening": "^8.8",
+        "firebase/php-jwt": "^5.2",
         "rusticisoftware/tincan": "~1.0"
     },
     "conflict": {
