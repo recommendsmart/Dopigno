@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '369f7d235d8070b27122258e94aabf9f9aa1d9f2',
+    'reference' => '3d95068fa986dbae211913931bfd6ebcb067159d',
     'name' => 'drupal/legacy-project',
   ),
   'versions' => 
@@ -690,7 +690,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '369f7d235d8070b27122258e94aabf9f9aa1d9f2',
+      'reference' => '3d95068fa986dbae211913931bfd6ebcb067159d',
     ),
     'drupal/link' => 
     array (
