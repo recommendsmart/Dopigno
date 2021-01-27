@@ -1,0 +1,10 @@
+entity.notification.settings:
+  title: Notification
+  description: Configure a Notification entity type
+  route_name:  entity.notification.settings
+  parent: system.admin_structure
+entity.notification.collection:
+  title: Notifications
+  description: List of notifications
+  route_name: entity.notification.collection
+  parent: system.admin_content

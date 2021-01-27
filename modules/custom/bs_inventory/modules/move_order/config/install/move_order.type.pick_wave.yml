@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+id: pick_wave
+label: Pick Wave
+description: 'Pre-approved requests for subinventory transfers to bring material from a source location in the warehouse to a staging subinventory.'

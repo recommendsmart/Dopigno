@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the inventory module.
+ */
+
+use Drupal\block\Entity\Block;
+
+/**
+ * Implements hook_install().
+ */
+function bs_inventory_install() {
+  $block = Block::create([
+    'id' => 'inventory_implementation_status',
+    'theme' => \Drupal::config('system.theme')->get('admin'),
+    'region' => 'highlighted',
+    'plugin' => 'inventory_implementation_status',
+    'visibility' => [
+      'request_path' => [
+        'id' => 'request_path',
+        'pages' => '/admin/inventory/implementation_status',
+        'negate' => TRUE,
+      ],
+    ],
+  ]);
+  $block->save();
+}

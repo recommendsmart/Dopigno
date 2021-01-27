@@ -1,0 +1,16 @@
+name: Move order
+type: module
+description: 'Provides the Move Order common business object.'
+package: Common Business Object
+# core: 8.x
+dependencies:
+  - bs_inventory:cbo_transaction
+  - business_core:cbo_item
+  - business_core:cbo_inventory
+  - drupal:state_machine
+
+# Information added by Drupal.org packaging script on 2017-04-05
+version: '8.x-2.0-alpha2'
+core: '8.x'
+project: 'bs_inventory'
+datestamp: 1491400410

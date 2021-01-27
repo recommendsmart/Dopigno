@@ -1,0 +1,5 @@
+notification_system_dispatch.settings:
+  title: 'Notification System Dispatch Settings'
+  route_name: notification_system_dispatch.settings
+  description: 'Adjust the settings of the notification dispatch module'
+  parent: system.admin_config_system

@@ -1,0 +1,17 @@
+name: Log
+type: module
+description: Provides a log entity type for real world record keeping.
+core_version_requirement: ^8.8 || ^9
+package: Log
+dependencies:
+  - drupal:system
+  - drupal:user
+  - drupal:views
+  - entity:entity
+  - state_machine:state_machine
+  - token:token
+
+# Information added by Drupal.org packaging script on 2020-10-15
+version: '2.x-dev'
+project: 'log'
+datestamp: 1602777460

@@ -1,0 +1,11 @@
+name: 'Resources'
+type: module
+description: 'The all things must be resource in idc industries.'
+# core: 8.x
+package: 'IDCP'
+
+# Information added by Drupal.org packaging script on 2018-05-20
+version: '8.x-1.x-dev'
+core: '8.x'
+project: 'resources'
+datestamp: 1526827991

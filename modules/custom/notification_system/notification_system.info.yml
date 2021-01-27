@@ -1,0 +1,14 @@
+name: Notification System
+type: module
+description: Base module to manage notifications
+package: Notification System
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - 'drupal:system (>=8.6)'
+  - 'drupal:user'
+
+# Information added by Drupal.org packaging script on 2020-11-12
+version: '1.0.0-alpha3'
+project: 'notification_system'
+datestamp: 1605201119

@@ -1,0 +1,18 @@
+<div class="notification-block notification-block--{{ display_mode }}"
+     data-notificationblock-display-mode="{{ display_mode }}"
+     data-notificationblock-show-read="{% if show_read %}yes{% else %}no{% endif %}">
+  {% if display_mode == 'simple' %}
+    <div class="notification-dropdown notification-dropdown__trigger">
+      <div class="">{{ 'Notifications'|t }} <span class="notification-counter is-hidden">0</span></div>
+      <div class="notification-dropdown__content">
+        <div class="notification-block__placeholder">{{ content }}</div>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if display_mode == 'bundled' %}
+    <div class="notification-groups">
+      <div class="notification-block__placeholder">{{ content }}</div>
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,11 @@
+entity.move_order_type.add_form:
+  route_name: entity.move_order_type.add_form
+  title: 'Add move order type'
+  appears_on:
+    - entity.move_order_type.collection
+
+entity.move_order.add_page:
+  route_name: entity.move_order.add_page
+  title: 'Add move order'
+  appears_on:
+    - entity.move_order.collection

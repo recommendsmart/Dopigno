@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: transfer_to_regular
+label: Transfer to Regular
+description: 'Transfer to Regular'
+source_type: purchase_order
+action: ownership_transfer

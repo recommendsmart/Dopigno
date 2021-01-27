@@ -1,0 +1,23 @@
+inventory.admin:
+  title: Inventory
+  description: 'Inventory Management'
+  route_name: inventory.admin
+  parent: system.admin
+
+inventory.report:
+  title: Reports
+  description: 'Reports'
+  route_name: inventory.admin_report
+  parent: inventory.admin
+inventory.admin_config:
+  title: Configuration
+  description: 'Inventory management settings.'
+  route_name: inventory.admin_config
+  parent: inventory.admin
+  weight: 90
+
+inventory.report.locator:
+  title: Locator
+  description: 'List locators you have defined.'
+  route_name: entity.locator.collection
+  parent: inventory.admin_report

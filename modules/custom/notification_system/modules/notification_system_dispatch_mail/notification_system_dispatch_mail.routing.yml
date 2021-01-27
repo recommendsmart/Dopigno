@@ -1,0 +1,7 @@
+notification_system_dispatch_mail.settings:
+  path: '/admin/config/notification-system/mail-settings'
+  defaults:
+    _title: 'Mail Dispatcher Settings'
+    _form: 'Drupal\notification_system_dispatch_mail\Form\SettingsForm'
+  requirements:
+    _permission: 'administer site configuration'

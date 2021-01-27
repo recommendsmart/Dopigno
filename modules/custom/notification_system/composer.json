@@ -1,0 +1,25 @@
+{
+    "name": "drupal/notification_system",
+    "description": "Base module to manage notifications",
+    "type": "drupal-module",
+    "keywords": ["Drupal", "Notifications"],
+    "homepage": "http://drupal.org/project/notification_system",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Max Bachhuber (bahuma20)",
+            "homepage": "https://www.drupal.org/u/bahuma20",
+            "role": "Maintainer"
+        }
+    ],
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/notification_system",
+        "source": "http://cgit.drupalcode.org/notification_system"
+    },
+    "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    }
+}

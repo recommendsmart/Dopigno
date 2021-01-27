@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+id: replenishment
+label: Replenishment
+description: 'Automatically created pre-approved move orders by planning and replenishment functions.'

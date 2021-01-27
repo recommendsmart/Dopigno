@@ -1,0 +1,18 @@
+services:
+  notification_system_dispatch.event_subscriber:
+    class: Drupal\notification_system_dispatch\EventSubscriber\NotificationSystemDispatchSubscriber
+    arguments: []
+    tags:
+      - { name: event_subscriber }
+
+  plugin.manager.notification_system_dispatcher:
+    class: Drupal\notification_system_dispatch\NotificationSystemDispatcherPluginManager
+    parent: default_plugin_manager
+
+  notification_system_dispatch.user_settings:
+    class: Drupal\notification_system_dispatch\Service\UserSettingsService
+    arguments: ['@user.data', '@current_user', '@config.factory']
+
+  notification_system_dispatch:
+    class: Drupal\notification_system_dispatch\Service\NotificationDispatcherService
+    arguments: ['@notification_system_dispatch.user_settings', '@state', '@queue', '@plugin.manager.notification_system_dispatcher']

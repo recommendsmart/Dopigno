@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - invoice_entity
+    - provider_entity
+id: invoice_entity.field_supplier
+field_name: field_supplier
+entity_type: invoice_entity
+type: entity_reference
+settings:
+  target_type: provider_entity
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

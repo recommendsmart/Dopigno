@@ -1,0 +1,41 @@
+name: Challenge
+description: 'Provides Challenge content type and related configuration. '
+type: module
+core: 8.x
+dependencies:
+  - allowed_formats
+  - better_exposed_filters
+  - block
+  - comment
+  - comments_order
+  - config_pages
+  - csv_serialization
+  - entity_browser
+  - field
+  - file
+  - flag
+  - image
+  - layout_builder
+  - layout_discovery
+  - menu_ui
+  - message
+  - metatag
+  - node
+  - openideal_challenge
+  - openideal_idea
+  - openideal_statistics
+  - path
+  - rabbit_hole
+  - rest
+  - route_condition
+  - rrssb
+  - rules
+  - serialization
+  - taxonomy
+  - text
+  - ultimate_cron
+  - user
+  - views
+  - views_data_export
+  - votingapi_reaction
+version: 1.0-1

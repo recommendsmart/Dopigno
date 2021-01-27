@@ -1,0 +1,11 @@
+notifications_block:
+  css:
+    component:
+      css/notification-dropdown.css: {}
+      css/notification-counter.css: {}
+  js:
+    js/notifications-block.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+

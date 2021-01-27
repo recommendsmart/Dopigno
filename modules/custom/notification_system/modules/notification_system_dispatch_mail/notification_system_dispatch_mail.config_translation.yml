@@ -1,0 +1,5 @@
+notification_system_dispatch_mail.settings:
+  title: 'Notification System Dispatch Mail Settings'
+  base_route_name: notification_system_dispatch_mail.settings
+  names:
+    - notification_system_dispatch_mail.settings

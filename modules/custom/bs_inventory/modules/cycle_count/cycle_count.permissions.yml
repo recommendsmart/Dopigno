@@ -1,0 +1,13 @@
+administer cycle counts:
+  title: 'Administer cycle counts'
+  description: 'Maintain cycle counts.'
+  restrict access: true
+access cycle count:
+  title: 'View cycle count'
+
+administer cycle count entries:
+  title: 'Administer cycle count entries'
+  description: 'Maintain cycle count entries.'
+  restrict access: true
+access cycle count entry:
+  title: 'View cycle count entry'

@@ -1,0 +1,13 @@
+notification_system_dispatch_mail.settings:
+  type: mapping
+  label: 'Notification System Dispatch Mail settings'
+  mapping:
+    langcode:
+      type: string
+      label: 'Default language'
+    subject_template:
+      type: text
+      label: 'Subject'
+    body_template:
+      type: text
+      label: 'Body'

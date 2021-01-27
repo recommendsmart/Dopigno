@@ -1,0 +1,5 @@
+entity.move_order.collection:
+  title: Move Order
+  description: 'Find and manage move orders.'
+  route_name: entity.move_order.collection
+  parent: system.admin

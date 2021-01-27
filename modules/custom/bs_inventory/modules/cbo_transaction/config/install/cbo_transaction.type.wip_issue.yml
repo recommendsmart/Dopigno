@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: wip_issue
+label: WIP Issue
+description: 'Issue from stores to WIP'
+source_type: job_or_schedule
+action: issue_from_stores

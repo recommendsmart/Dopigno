@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: rma_receipt
+label: RMA Receipt
+description: 'Return material authorization'
+source_type: rma
+action: receipt_into_stores

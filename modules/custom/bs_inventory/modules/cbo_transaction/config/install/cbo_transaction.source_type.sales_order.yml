@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+id: sales_order
+label: Sales Order
+description: ''

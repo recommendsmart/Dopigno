@@ -1,0 +1,38 @@
+move_order_status:
+  id: move_order_status
+  label: 'Move order status'
+  group: move_order
+  states:
+    incomplete:
+      label: 'Incomplete'
+    preapproved:
+      label: 'Preapproved'
+    approved:
+      label: 'Approved'
+    rejected:
+      label: 'Rejected'
+    cancelled:
+      label: 'Cancelled'
+    closed:
+      label: 'Closed'
+  transitions:
+    submit:
+      label: 'Submit'
+      from: [incomplete]
+      to: preapproved
+    approve:
+      label: 'Approve'
+      from: [preapproved]
+      to: approved
+    reject:
+      label: 'Reject'
+      from: [preapproved]
+      to: rejected
+    cancel:
+      label: 'Cancel'
+      from: [incomplete, preapproved, approved, rejected]
+      to: cancelled
+    close:
+      label: 'Close'
+      from: [preapproved, approved, rejected, cancelled]
+      to: closed

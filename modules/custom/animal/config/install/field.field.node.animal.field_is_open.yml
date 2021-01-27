@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_is_open
+    - node.type.animal
+id: node.animal.field_is_open
+field_name: field_is_open
+entity_type: node
+bundle: animal
+label: Open
+description: "Check or uncheck this to mark the current Animal is open or close.\r\nAnimals without \"Open\" option are still published but they are closed for further activity."
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

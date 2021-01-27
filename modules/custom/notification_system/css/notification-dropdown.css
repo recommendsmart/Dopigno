@@ -1,0 +1,22 @@
+.notification-dropdown {
+  position: relative;
+}
+
+.notification-dropdown__content {
+  opacity: 0;
+  visibility: hidden;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,.24);
+  padding: 1em;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 499;
+  min-width: 250px;
+  max-width: 600px;
+}
+
+.notification-dropdown__trigger:hover .notification-dropdown__content {
+  opacity: 1;
+  visibility: visible;
+}

@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * The module that provides Enterprise Asset Management business solution.
+ */
+
+/**
+ * Implements hook_menu_links_discovered_alter().
+ */
+function bs_inventory_menu_links_discovered_alter(&$links) {
+  $links['transaction.receipt']['parent'] = 'inventory.admin';
+  $links['cycle_count.admin']['parent'] = 'inventory.admin';
+
+  $links['entity.item_lot.collection']['parent'] = 'inventory.report';
+  $links['entity.item_lot.collection']['title'] = 'Expired Lots';
+
+  $links['locator.locator.quantity']['parent'] = 'inventory.report';
+  $links['cbo_inventory.subinventory.quantity']['parent'] = 'inventory.report';
+
+  $links['cbo_inventory.subinventory_config']['parent'] = 'inventory.admin_config';
+  $links['entity.locator.collection']['parent'] = 'inventory.admin_config';
+  $links['item.admin_config']['parent'] = 'inventory.admin_config';
+  $links['transaction.admin_config']['parent'] = 'inventory.admin_config';
+
+  $links['entity.location.collection']['parent'] = 'cbs.admin_config';
+  $links['organization.admin_config']['parent'] = 'cbs.admin_config';
+  $links['people.admin_config']['parent'] = 'cbs.admin_config';
+  $links['uom.admin_config']['parent'] = 'cbs.admin_config';
+}

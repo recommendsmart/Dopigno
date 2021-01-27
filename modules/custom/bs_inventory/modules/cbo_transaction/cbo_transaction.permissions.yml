@@ -1,0 +1,6 @@
+administer transactions:
+  title: 'Administer transactions'
+  description: 'Maintain transactions.'
+  restrict access: true
+access transaction:
+  title: 'View transaction'

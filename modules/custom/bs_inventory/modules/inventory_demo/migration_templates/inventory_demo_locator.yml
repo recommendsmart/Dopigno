@@ -1,0 +1,22 @@
+id: inventory_demo_locator
+label: 'Inventory demo locator'
+migrate_tags:
+  - 'Inventory demo'
+source:
+  plugin: csv
+  header_row_count: 1
+  path: modules/bs_inventory/module/inventory_demo/datas/locator.csv
+  keys:
+    - locator
+process:
+  title: locator
+  description: description
+  subinventory:
+    plugin: migrattion
+    migration: inventory_demo_subinventory
+    source: subinventory
+destination:
+  plugin: entity:subinventory
+migration_dependencies:
+  required:
+    - inventory_demo_subinventory

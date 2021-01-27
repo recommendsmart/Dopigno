@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: wip_completion_return
+label: WIP Completion Return
+description: 'Return assembly from stores to WIP'
+source_type: job_or_schedule
+action: assembly_return

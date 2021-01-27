@@ -1,0 +1,17 @@
+cycle_count.admin:
+  title: Cycle Count
+  description: 'Cycle Count'
+  route_name: cycle_count.admin
+  parent: system.admin
+
+entity.cycle_count.collection:
+  title: Cycle Counts
+  description: 'Find and manage cycle count.'
+  route_name: entity.cycle_count.collection
+  parent: cycle_count.admin
+
+entity.cycle_count_entry.collection:
+  title: Cycle Count Entries
+  description: 'Find and manage cycle count entries.'
+  route_name: entity.cycle_count_entry.collection
+  parent: cycle_count.admin

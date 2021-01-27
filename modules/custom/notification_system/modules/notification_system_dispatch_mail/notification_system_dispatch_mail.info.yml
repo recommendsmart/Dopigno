@@ -1,0 +1,15 @@
+name: Notification System Dispatch Mail
+type: module
+description: Send notifications via mail.
+package: Notification System
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - notification_system:notification_system
+  - notification_system_dispatch:notification_system_dispatch
+configure: notification_system_dispatch_mail.settings
+
+# Information added by Drupal.org packaging script on 2020-11-12
+version: '1.0.0-alpha3'
+project: 'notification_system'
+datestamp: 1605201119

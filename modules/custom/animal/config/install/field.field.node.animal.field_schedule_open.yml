@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_schedule_open
+    - node.type.animal
+id: node.animal.field_schedule_open
+field_name: field_schedule_open
+entity_type: node
+bundle: animal
+label: 'Schedule open'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1608023103
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

@@ -1,0 +1,103 @@
+<?php
+
+use Drupal\Core\Database\Database;
+use Drupal\Core\Field\BaseFieldDefinition;
+
+/**
+ * Implements hook_cron().
+ */
+function notification_system_database_schema() {
+  $schema['notification_system_database_read'] = [
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Database record id.',
+      ],
+      'uid' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'UID of user.',
+      ],
+      'entity_id' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'ID of notification',
+      ],
+      'timestamp' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'When the notification was marked as read',
+      ],
+    ],
+    'primary key' => [
+      'id',
+    ],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Install the new 'expires' field for the notification entity type.
+ */
+function notification_system_database_update_8001() {
+  $field_storage_definition = BaseFieldDefinition::create('datetime')
+    ->setLabel(t('Expires on'))
+    ->setDescription(t('Specify a date when the notification is not relevant anymore.'))
+    ->setTranslatable(FALSE)
+    ->setRequired(FALSE)
+    ->setSetting('datetime_type', \Drupal\datetime\Plugin\Field\FieldType\DateTimeItem::DATETIME_TYPE_DATETIME)
+    ->setDisplayOptions('view', [
+      'label' => 'above',
+      'type' => 'datetime_default',
+    ])
+    ->setDisplayConfigurable('form', TRUE)
+    ->setDisplayOptions('form', [
+      'type' => 'datetime_default',
+    ])
+    ->setDisplayConfigurable('view', TRUE);
+
+  \Drupal::entityDefinitionUpdateManager()
+    ->installFieldStorageDefinition('expires', 'notification', 'notification', $field_storage_definition);
+}
+
+/**
+ * Create the new notification_system_database_read table.
+ */
+function notification_system_database_update_8002() {
+  $schema = Database::getConnection()
+    ->schema();
+
+  $schema->createTable('notification_system_database_read', [
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Database record id.',
+      ],
+      'uid' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'UID of user.',
+      ],
+      'entity_id' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'ID of notification',
+      ],
+      'timestamp' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'When the notification was marked as read',
+      ],
+    ],
+    'primary key' => [
+      'id',
+    ],
+  ]);
+}

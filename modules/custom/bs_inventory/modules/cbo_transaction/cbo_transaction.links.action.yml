@@ -1,0 +1,17 @@
+entity.transaction_source_type.add_form:
+  route_name: entity.transaction_source_type.add_form
+  title: 'Add transaction source type'
+  appears_on:
+    - entity.transaction_source_type.collection
+
+entity.transaction_type.add_form:
+  route_name: entity.transaction_type.add_form
+  title: 'Add transaction type'
+  appears_on:
+    - entity.transaction_type.collection
+
+transaction.receipt.add_page:
+  route_name: transaction.receipt.add_page
+  title: 'Add receipt'
+  appears_on:
+    - transaction.receipt

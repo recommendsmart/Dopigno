@@ -1,0 +1,4 @@
+administer notification dispatch bundle entities:
+  title: 'Administer Notification Dispatch Bundle entities'
+  description: 'Allow to access the administration form to configure Notification Dispatch Bundle entities.'
+  restrict access: true

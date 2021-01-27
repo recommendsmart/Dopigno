@@ -1,0 +1,13 @@
+name: Locator
+type: module
+description: 'Identify physical areas where you store inventory items.'
+package: 'Common Business Object'
+# core: 8.x
+dependencies:
+  - business_core:cbo_inventory
+
+# Information added by Drupal.org packaging script on 2017-04-05
+version: '8.x-2.0-alpha2'
+core: '8.x'
+project: 'bs_inventory'
+datestamp: 1491400410

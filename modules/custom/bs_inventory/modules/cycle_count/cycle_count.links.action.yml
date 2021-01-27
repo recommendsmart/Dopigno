@@ -1,0 +1,11 @@
+entity.cycle_count.add_form:
+  route_name: entity.cycle_count.add_form
+  title: 'Add cycle count'
+  appears_on:
+    - entity.cycle_count.collection
+
+entity.cycle_count_entry.add_form:
+  route_name: entity.cycle_count_entry.add_form
+  title: 'Add cycle count entry'
+  appears_on:
+    - entity.cycle_count_entry.collection

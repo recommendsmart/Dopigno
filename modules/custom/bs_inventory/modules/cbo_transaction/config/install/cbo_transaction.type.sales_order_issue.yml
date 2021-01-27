@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: sales_order_issue
+label: Sales order issue
+description: 'Ship confirm external sales order'
+source_type: sales_order
+action: issue_from_stores

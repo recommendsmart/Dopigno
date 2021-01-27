@@ -1,0 +1,13 @@
+entity.transaction_type.edit_form:
+  title: 'Edit'
+  route_name: entity.transaction_type.edit_form
+  base_route: entity.transaction_type.edit_form
+
+entity.transaction.canonical:
+  route_name: entity.transaction.canonical
+  base_route: entity.transaction.canonical
+  title: View
+entity.transaction.edit_form:
+  route_name: entity.transaction.edit_form
+  base_route: entity.transaction.canonical
+  title: Edit

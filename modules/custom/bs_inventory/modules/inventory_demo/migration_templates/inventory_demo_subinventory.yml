@@ -1,0 +1,23 @@
+id: inventory_demo_subinventory
+label: 'Inventory demo subinventory'
+migrate_tags:
+  - 'Inventory demo'
+source:
+  plugin: csv
+  header_row_count: 1
+  path: modules/bs_inventory/module/inventory_demo/datas/item.csv
+  keys:
+    - name
+process:
+  title: name
+  description: description
+  type: type
+  organization:
+    plugin: migration
+    migration: inventory_demo_organization
+    source: organization
+destination:
+  plugin: entity:subinventory
+migration_dependencies:
+  required:
+    - inventory_demo_organization

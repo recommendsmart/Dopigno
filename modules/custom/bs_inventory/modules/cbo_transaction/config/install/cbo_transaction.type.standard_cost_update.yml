@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: standard_cost_update
+label: Standard cost update
+description: 'Update standard cost information'
+source_type: standard_cost_update
+action: cost_update

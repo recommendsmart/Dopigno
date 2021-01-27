@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: return_to_vendor
+label: Return to Vendor
+description: 'Return to vendor from stores'
+source_type: purchase_order
+action: issue_from_stores

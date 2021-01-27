@@ -1,0 +1,47 @@
+/*body *:not(#print-area) {*/
+    /*display: none;*/
+/*}*/
+@page {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    width: 21cm;
+}
+html, body {
+    padding: 0;
+    margin: 0;
+}
+body {
+    visibility: hidden !important;
+
+}
+#content {
+    width: 100%;
+    margin:0;
+    padding:0;
+}
+#print-area {
+    width: 19cm;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    visibility: visible;
+    padding: 0;
+    margin: 1cm;
+}
+#facture-content table th,#facture-content table td {
+    border: 0.25mm solid #aaa !important;
+}
+.table td {
+    font-size: 9pt;
+}
+#facture-footer {
+    position: absolute;
+    left: 0;
+    bottom: 0.5cm;
+    font-size: 9pt;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}

@@ -1,0 +1,8 @@
+services:
+  notification_system:
+    class: Drupal\notification_system\Service\NotificationSystem
+    arguments: ['@entity_type.manager', '@plugin.manager.notification_provider', '@config.factory']
+
+  plugin.manager.notification_provider:
+    class: Drupal\notification_system\NotificationProviderPluginManager
+    parent: default_plugin_manager

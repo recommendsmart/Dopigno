@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+id: requisition
+label: Requisition
+description: 'Manually generated request for a move order.'

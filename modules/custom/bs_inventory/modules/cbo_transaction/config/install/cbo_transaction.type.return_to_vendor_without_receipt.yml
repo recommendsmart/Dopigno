@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: return_to_vendor_without_receipt
+label: Return to Vendor without Receipt
+description: 'Return to Vendor from Stores'
+source_type: inventory
+action: issue_from_stores

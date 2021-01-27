@@ -1,0 +1,61 @@
+<?php
+
+use Drupal\notification_system_dispatch\NotificationSystemDispatcherInterface;
+
+/**
+ * Implements hook_cron().
+ */
+function notification_system_dispatch_cron() {
+  /** @var \Drupal\notification_system_dispatch\Service\UserSettingsService $userSettingsService */
+  $userSettingsService = \Drupal::service('notification_system_dispatch.user_settings');
+
+  /** @var \Drupal\notification_system_dispatch\Service\NotificationDispatcherService $notificationDispatcherService */
+  $notificationDispatcherService = \Drupal::service('notification_system_dispatch');
+
+  /** @var \Drupal\Core\Entity\EntityStorageInterface $dispatchBundleStorage */
+  $dispatchBundleStorage = \Drupal::entityTypeManager()->getStorage('notification_dispatch_bundle');
+
+  $dispatchBundles = $dispatchBundleStorage->loadMultiple();
+
+  foreach ($dispatchBundles as $dispatchBundle) {
+    $userId = $dispatchBundle->get('user_id')->target_id;
+    $sendMode = $userSettingsService->getSendMode($userId);
+    $lastDispatch = $userSettingsService->getLastDispatchTimestamp($userId);
+
+    $dispatchNow = FALSE;
+
+    if ($sendMode == NotificationSystemDispatcherInterface::SEND_MODE_IMMEDIATELY) {
+      // User has changed it's send mode to immediately since the bundle was created.
+      // So dispatch this bundle now.
+      $dispatchNow = TRUE;
+    }
+
+    if ($sendMode == NotificationSystemDispatcherInterface::SEND_MODE_DAILY && $lastDispatch < (time() - 24*60*60)) {
+      $dispatchNow = TRUE;
+    }
+
+    if ($sendMode == NotificationSystemDispatcherInterface::SEND_MODE_WEEKLY && $lastDispatch < (time() - 7*24*60*60)) {
+      $dispatchNow = TRUE;
+    }
+
+
+    if ($dispatchNow) {
+      $notifications = [];
+
+      foreach ($dispatchBundle->get('notifications') as $notificationReference) {
+        $notificationModel = $notificationReference->loadNotification();
+
+        if ($notificationModel) {
+          $notifications[] = $notificationModel;
+        }
+      }
+
+      if (count($notifications) > 0) {
+        $notificationDispatcherService->queue($notifications, $userId);
+      }
+
+      $dispatchBundle->delete();
+      $userSettingsService->setLastDispatchTimestamp(time(), $userId);
+    }
+  }
+}

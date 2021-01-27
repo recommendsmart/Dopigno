@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * Install new configuration.
+ */
+function notification_system_dispatch_update_8001(&$sandbox) {
+  $config_path = drupal_get_path('module', 'notification_system_dispatch') . '/config/install';
+  $config_source = new \Drupal\Core\Config\FileStorage($config_path);
+
+  /** @var \Drupal\Core\Config\ConfigInstallerInterface $installer */
+  $installer = \Drupal::service('config.installer');
+  $installer->installOptionalConfig($config_source);
+}
+
+/**
+ * Install the "Notification Dispatch Bundle" Entity.
+ */
+function notification_system_dispatch_update_8002(&$sandbox) {
+  if (!Drupal::database()->schema()->tableExists('notification_dispatch_bundle')) {
+    Drupal::entityTypeManager()->clearCachedDefinitions();
+    Drupal::entityDefinitionUpdateManager()
+      ->installEntityType(Drupal::entityTypeManager()->getDefinition('notification_dispatch_bundle'));
+  } else {
+    return 'Notification Dispatch Bundle entity already exists';
+  }
+}

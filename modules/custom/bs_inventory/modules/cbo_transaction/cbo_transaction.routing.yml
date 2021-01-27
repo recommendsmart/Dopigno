@@ -1,0 +1,20 @@
+transaction.admin_config:
+  path: '/admin/transaction/config'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Configuration'
+  requirements:
+    _permission: 'access transaction type'
+
+transaction.receipt:
+  path: '/admin/transaction/receipt'
+  requirements:
+    _permission: 'access item'
+
+transaction.receipt.add_page:
+  path: '/admin/transaction/receipt/add'
+  defaults:
+    _controller: '\Drupal\cbo_transaction\Controller\TransactionController::receiptAddPage'
+    _title: 'Add receipt'
+  requirements:
+    _entity_create_access: 'transaction'

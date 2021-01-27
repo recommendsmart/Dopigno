@@ -1,0 +1,14 @@
+name: Notification System Dispatch
+type: module
+description: Send notifications out of Drupal
+package: Notification System
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - notification_system:notification_system
+configure: notification_system_dispatch.settings
+
+# Information added by Drupal.org packaging script on 2020-11-12
+version: '1.0.0-alpha3'
+project: 'notification_system'
+datestamp: 1605201119

@@ -1,0 +1,16 @@
+notification_system_dispatch.settings:
+  type: mapping
+  label: 'Notification System Dispatch settings'
+  mapping:
+    langcode:
+      type: string
+      label: 'Default language'
+    enable_bundling:
+      type: boolean
+      label: 'Enable bundling'
+    default_enabled_dispatchers:
+      type: sequence
+      label: 'Dispatchers that are enabled by default'
+      sequence:
+        type: string
+        label: 'Dispatcher ID'

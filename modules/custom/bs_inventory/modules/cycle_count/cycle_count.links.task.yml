@@ -1,0 +1,17 @@
+entity.cycle_count.canonical:
+  route_name: entity.cycle_count.canonical
+  base_route: entity.cycle_count.canonical
+  title: View
+entity.cycle_count.edit_form:
+  route_name: entity.cycle_count.edit_form
+  base_route: entity.cycle_count.canonical
+  title: Edit
+
+entity.cycle_count_entry.canonical:
+  route_name: entity.cycle_count_entry.canonical
+  base_route: entity.cycle_count_entry.canonical
+  title: View
+entity.cycle_count_entry.edit_form:
+  route_name: entity.cycle_count_entry.edit_form
+  base_route: entity.cycle_count_entry.canonical
+  title: Edit

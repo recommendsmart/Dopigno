@@ -1,0 +1,31 @@
+inventory.admin:
+  path: '/admin/inventory'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Asset'
+  requirements:
+    _permission: 'access subinventory'
+
+inventory.admin_report:
+  path: '/admin/inventory/report'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Reports'
+  requirements:
+    _permission: 'access subinventory'
+
+inventory.admin_config:
+  path: '/admin/inventory/config'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Configuration'
+  requirements:
+    _permission: 'access administration pages'
+
+inventory.implementation_status:
+  path: '/admin/inventory/implementation_status'
+  defaults:
+    _controller: '\Drupal\bs_inventory\Controller\InventoryController::implementationStatus'
+    _title: 'Inventory implementation status'
+  requirements:
+    _permission: 'access administration pages'

@@ -1,0 +1,7 @@
+cycle_count.admin:
+  path: '/cycle_count'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Cycle Count'
+  requirements:
+    _permission: 'access cycle count'

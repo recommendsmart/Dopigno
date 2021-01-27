@@ -1,0 +1,15 @@
+id: inventory_demo_organization
+label: 'Inventory demo organization'
+migrate_tags:
+  - 'Inventory demo'
+source:
+  plugin: csv
+  header_row_count: 1
+  path: modules/bs_inventory/modules/inventory_demo/datas/organization.csv
+  keys:
+    - code
+process:
+  title: code
+  inventory_organization: inventory_organization
+destination:
+  plugin: entity:organization

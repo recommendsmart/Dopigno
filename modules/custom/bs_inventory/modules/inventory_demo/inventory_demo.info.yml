@@ -1,0 +1,15 @@
+name: 'Inventory demo data'
+type: module
+description: 'Provides demo data for Inventory management system.'
+package: 'Business solution'
+# core: 8.x
+dependencies:
+  - bs_inventory
+  - drupal:migrate_source_csv
+  - migrate
+
+# Information added by Drupal.org packaging script on 2017-04-05
+version: '8.x-2.0-alpha2'
+core: '8.x'
+project: 'bs_inventory'
+datestamp: 1491400410

@@ -1,0 +1,11 @@
+administer move orders:
+  title: 'Administer move orders'
+  restrict access: true
+administer move order types:
+  title: 'Administer move order types'
+  restrict access: true
+access move order:
+  title: 'View move order'
+bypass move order access:
+  title: 'Bypass move order access'
+  description: 'Access all content in all organizations.'

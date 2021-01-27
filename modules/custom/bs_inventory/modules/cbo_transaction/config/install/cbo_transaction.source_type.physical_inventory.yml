@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+id: physical_inventory
+label: Physical Inventory
+description: ''

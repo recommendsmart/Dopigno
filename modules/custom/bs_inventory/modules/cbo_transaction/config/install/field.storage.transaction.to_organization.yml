@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - cbo_organization
+    - cbo_transaction
+id: transaction.to_organization
+field_name: to_organization
+entity_type: transaction
+type: entity_reference
+settings:
+  target_type: organization
+module: cbo_transaction
+locked: true
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

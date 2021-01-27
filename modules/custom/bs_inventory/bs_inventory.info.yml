@@ -1,0 +1,22 @@
+name: Inventory
+type: module
+description: 'Drupal Inventory business solution.'
+package: 'Business Solution'
+# core: 8.x
+dependencies:
+  - bs_inventory:cbo_transaction
+  - bs_inventory:cycle_count
+  - bs_inventory:locator
+  - business_core:cbo_inventory
+  - business_core:cbo_item
+  - business_core:cbo_location
+  - business_core:cbo_organization
+  - business_core:cbs
+  - business_core:item_lot
+  - business_core:uom
+
+# Information added by Drupal.org packaging script on 2017-04-05
+version: '8.x-2.0-alpha2'
+core: '8.x'
+project: 'bs_inventory'
+datestamp: 1491400410

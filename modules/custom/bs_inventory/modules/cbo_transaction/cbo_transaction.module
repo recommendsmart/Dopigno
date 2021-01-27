@@ -1,0 +1,120 @@
+<?php
+
+/**
+ * @file
+ * This module manages inventory transaction.
+ */
+
+use Drupal\cbo_transaction\TransactionTypeInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+
+/**
+ * Add the to_organization field to a transaction type.
+ */
+function cbo_transaction_add_to_organization_field(TransactionTypeInterface $type) {
+  $field_storage = FieldStorageConfig::loadByName('transaction', 'to_organization');
+  $field = FieldConfig::loadByName('transaction', $type->id(), 'to_organization');
+  if (empty($field)) {
+    $target_bundles = [];
+    $organization_types = \Drupal::entityTypeManager()
+      ->getStorage('organization')
+      ->loadMultiple();
+    if ($organization_types) {
+      foreach ($organization_types as $organization_type) {
+        $target_bundles[$organization_type->id()] = $organization_type->id();
+      }
+    }
+
+    $field = FieldConfig::create([
+      'field_storage' => $field_storage,
+      'bundle' => $type->id(),
+      'label' => t('To Org'),
+      'settings' => [
+        'handler' => 'default:organization',
+        'handler_settings' => [
+          'target_bundles' => $target_bundles,
+        ],
+      ],
+    ]);
+    $field->save();
+  }
+}
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function cbo_transaction_entity_base_field_info(EntityTypeInterface $entity_type) {
+  if ($entity_type->id() == 'item') {
+    $fields = [];
+
+    $fields['transactable'] = BaseFieldDefinition::create('boolean')
+      ->setLabel(t('Transactable'))
+      ->setDescription(t('Enable to perform transactions on the item.'))
+      ->setDisplayOptions('view', [
+        'type' => 'boolean',
+        'weight' => 0,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayOptions('form', [
+        'type' => 'boolean_checkbox',
+        'weight' => 0,
+      ])
+      ->setDisplayConfigurable('form', TRUE);
+
+    $fields['check_material_shortages'] = BaseFieldDefinition::create('boolean')
+      ->setLabel(t('Check Material Shortages'))
+      ->setDescription(t('Enable to check for material shortages and trigger material shortage alert and shortage notification during transactions of item.'))
+      ->setDisplayOptions('view', [
+        'type' => 'boolean',
+        'weight' => 0,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayOptions('form', [
+        'type' => 'boolean_checkbox',
+        'weight' => 0,
+      ])
+      ->setDisplayConfigurable('form', TRUE);
+
+    return $fields;
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter() for item_form.
+ */
+function cbo_transaction_form_item_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (isset($form['transactable'])) {
+    $form['transactable']['#group'] = 'inventory_group';
+    $form['transactable']['#states'] = [
+      'visible' => [
+        'checkbox[name="stockable"]' => ['checked' => TRUE],
+      ],
+    ];
+  }
+  if (isset($form['check_material_shortages'])) {
+    $form['check_material_shortages']['#group'] = 'inventory_group';
+    $form['check_material-shortages']['#states'] = [
+      'visible' => [
+        'checkbox[name="transactable"]' => ['checked' => TRUE],
+      ],
+    ];
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_create() for item.
+ */
+function cbo_transaction_item_create(EntityInterface $entity) {
+  $type = $entity->get('type')->entity;
+  if ($type->getThirdPartySetting('cbo_transaction', 'transactable')) {
+    $entity->set('transactable', TRUE);
+  }
+  if ($type->getThirdPartySetting('cbo_transaction', 'check_material_shortages')) {
+    $entity->set('check_material_shortages', TRUE);
+  }
+}

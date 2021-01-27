@@ -1,0 +1,6 @@
+administer locators:
+  title: 'Administer locators'
+  description: 'Maintain locators.'
+  restrict access: true
+access locator:
+  title: 'View locator'

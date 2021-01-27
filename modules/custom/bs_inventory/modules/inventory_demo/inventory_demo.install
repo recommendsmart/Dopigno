@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the inventory_demo module.
+ */
+
+use Drupal\migrate\MigrateExecutable;
+use Drupal\migrate\MigrateMessage;
+
+/**
+ * Implements hook_install().
+ */
+function inventory_demo_install() {
+  $migrations = [
+    'inventory_demo_item' => 'datas/item.csv',
+    'inventory_demo_item_category' => 'datas/item_category.csv',
+    'inventory_demo_locator' => 'datas/locator.csv',
+    'inventory_demo_organization' => 'datas/organization.csv',
+    'inventory_demo_subinventory' => 'datas/subinventory',
+  ];
+  $messages = new MigrateMessage();
+  $path = drupal_get_path('module', 'inventory_demo') . '/';
+  foreach ($migrations as $id => $file) {
+    $configuration['source']['path'] = $path . $file;
+    $migration = \Drupal::service('plugin.manager.migration')
+      ->createInstance($id, $configuration);
+    $executable = new MigrateExecutable($migration, $messages);
+    $executable->import();
+  }
+}

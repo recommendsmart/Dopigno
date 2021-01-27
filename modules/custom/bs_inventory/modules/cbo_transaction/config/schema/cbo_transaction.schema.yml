@@ -1,0 +1,46 @@
+# Schema for the configuration files of the transaction module.
+
+cbo_transaction.source_type.*:
+  type: config_entity
+  label: 'Transaction source type'
+  mapping:
+    id:
+      type: string
+      label: 'Machine-readable name'
+    label:
+      type: label
+      label: 'Name'
+    description:
+      type: text
+      label: 'Description'
+
+cbo_transaction.type.*:
+  type: config_entity
+  label: 'Transaction type'
+  mapping:
+    id:
+      type: string
+      label: 'Machine-readable name'
+    label:
+      type: label
+      label: 'Name'
+    description:
+      type: string
+      label: 'Description'
+    source_type:
+      type: string
+      label: 'Source Type'
+    action:
+      type: string
+      label: 'Action'
+
+cbo_item.type.*.third_party.cbo_transaction:
+  type: mapping
+  label: 'Transaction settings for this item type'
+  mapping:
+    transactable:
+      type: boolean
+      label: 'Enable to perform transactions.'
+    check_material_shortages:
+      type: boolean
+      label: 'Enable to check for material shortages and trigger material shortage alert and shortage notification during transactions.'

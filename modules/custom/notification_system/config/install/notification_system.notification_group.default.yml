@@ -1,0 +1,7 @@
+langcode: 'en'
+id: 'default'
+label: 'Default Group'
+description:
+  value: ""
+  format: full_html
+weight: 0

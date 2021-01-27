@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - openideal_item
+title: 'Default cron handler'
+id: openideal_item_cron
+weight: 0
+module: openideal_item
+callback: openideal_item_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the transaction module.
+ */
+
+use Drupal\Core\Field\BaseFieldDefinition;
+
+/**
+ * Add lot and serial_number to transaction_line entities.
+ */
+function cbo_transaction_update_8201() {
+
+  $storage_definition = BaseFieldDefinition::create('entity_reference')
+    ->setLabel(t('Lot'))
+    ->setSetting('target_type', 'item_lot');
+
+  \Drupal::entityDefinitionUpdateManager()
+    ->installFieldStorageDefinition('lot', 'transaction_line', 'cbo_transaction', $storage_definition);
+
+  $storage_definition = BaseFieldDefinition::create('string')
+    ->setLabel(t('Serial Number'))
+    ->setSetting('max_length', 255);
+
+  \Drupal::entityDefinitionUpdateManager()
+    ->installFieldStorageDefinition('serial_number', 'transaction_line', 'cbo_transaction', $storage_definition);
+}

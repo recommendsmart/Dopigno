@@ -1,0 +1,10 @@
+notification_system_database.settings:
+  type: mapping
+  label: 'Notification System Database settings'
+  mapping:
+    langcode:
+      type: string
+      label: 'Default language'
+    read_purge_days:
+      type: integer
+      label: 'Read Purge Days'

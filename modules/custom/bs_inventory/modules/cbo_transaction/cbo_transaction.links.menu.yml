@@ -1,0 +1,22 @@
+transaction.receipt:
+  title: Receiving
+  description: 'Receiving'
+  route_name: transaction.receipt
+  parent: system.admin
+
+transaction.admin_config:
+  title: Transaction Configuration
+  description: 'Transaction settings.'
+  route_name: transaction.admin_config
+  parent: system.admin
+
+entity.transaction_source_type.collection:
+  title: Source Types
+  description: 'Classify transactions according to their origins.'
+  route_name: entity.transaction_source_type.collection
+  parent: transaction.admin_config
+entity.transaction_type.collection:
+  title: Transaction Types
+  description: 'Combining a transaction source type with a transaction action.'
+  route_name: entity.transaction_type.collection
+  parent: transaction.admin_config

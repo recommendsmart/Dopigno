@@ -1,0 +1,13 @@
+name,description,type,category,uom
+CM2345,Laptop Computer,purchased_item,Hardware,each
+CM2346,Keyboard,purchased_item,Hardware,each
+CM2347,486 Processor,purchased_item,CPU,each
+CM2348,Active Matrix Screen,purchased_item,Hardware,each
+CM2349,Monitor Manual,purchased_item,Other,each
+CM2350,DOS Operating System,purchased_item,Operating System,each
+CM2351,Desktop Computer,purchased_item,Hardware,each
+CM2352,Desktop keyboard,purchased_item,Hardware,each
+CM2353,Pentium Processor,purchased_item,CPU,each
+CM2354,VGA Monitor,purchased_item,Hardware,each
+CM2355,Monitor Manual,purchased_item,Other,each
+CM2356,UNIX Operating System,purchased_item,Operating System,each

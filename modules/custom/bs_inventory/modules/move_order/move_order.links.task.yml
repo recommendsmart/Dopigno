@@ -1,0 +1,18 @@
+entity.move_order.canonical:
+  title: View
+  route_name: entity.move_order.canonical
+  base_route: entity.move_order.canonical
+entity.move_order.edit_form:
+  title: Edit
+  route_name: entity.move_order.edit_form
+  base_route: entity.move_order.canonical
+
+entity.move_order_type.edit_form:
+  title: Edit
+  route_name: entity.move_order_type.edit_form
+  base_route: entity.move_order_type.edit_form
+
+entity.move_order_type.collection:
+  title: List
+  route_name: entity.move_order_type.collection
+  base_route: entity.move_order_type.collection

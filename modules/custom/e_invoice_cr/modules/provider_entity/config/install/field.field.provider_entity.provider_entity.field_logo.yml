@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.provider_entity.field_logo
+    - media.type.image
+  module:
+    - provider_entity
+id: provider_entity.provider_entity.field_logo
+field_name: field_logo
+entity_type: provider_entity
+bundle: provider_entity
+label: Logo
+description: 'Add a logo.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

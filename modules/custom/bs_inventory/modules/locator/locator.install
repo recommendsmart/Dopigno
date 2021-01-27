@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the locator module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function locator_schema() {
+  $schema['locator_quantity'] = [
+    'fields' => [
+      'lid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'iid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'quantity' => [
+        'type' => 'float',
+        'not null' => FALSE,
+      ],
+    ],
+    'primary key' => ['lid', 'iid'],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Add the locator_quantity table.
+ */
+function locator_update_8201() {
+  $database = \Drupal::database();
+  $schema = $database->schema();
+  $definition = locator_schema();
+  $schema->createTable('locator_quantity', $definition['locator_quantity']);
+}

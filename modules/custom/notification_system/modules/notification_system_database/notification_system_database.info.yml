@@ -1,0 +1,16 @@
+name: Notification System Database Storage
+type: module
+description: 'Provides a notification entity.'
+package: Notification System
+core: 8.x
+core_version_requirement: ^8 || ^9
+configure: entity.notification.settings
+dependencies:
+  - notification_system:notification_system
+  - drupal:link
+  - drupal:options
+
+# Information added by Drupal.org packaging script on 2020-11-12
+version: '1.0.0-alpha3'
+project: 'notification_system'
+datestamp: 1605201119

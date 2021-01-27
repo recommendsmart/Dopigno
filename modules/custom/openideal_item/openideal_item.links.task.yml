@@ -1,0 +1,5 @@
+openideal_item.moderated_items:
+  title: 'Items'
+  route_name: view.moderated_content.items_page
+  parent_id: system.admin_content
+  weight: 1

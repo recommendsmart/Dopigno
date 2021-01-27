@@ -1,0 +1,6 @@
+langcode: en
+status: true
+dependencies: {  }
+id: rma
+label: Return merchandise authorization(RMA)
+description: ''

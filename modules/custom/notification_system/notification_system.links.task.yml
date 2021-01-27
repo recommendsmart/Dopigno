@@ -1,0 +1,10 @@
+entity.notification_group.collection:
+  title: List
+  route_name: entity.notification_group.collection
+  base_route: entity.notification_group.collection
+
+notification_system.notification_groups.mapping:
+  title: Mapping
+  description: Map Notification Types to Notification Groups
+  route_name: notification_system.notification_groups.mapping
+  base_route: entity.notification_group.collection

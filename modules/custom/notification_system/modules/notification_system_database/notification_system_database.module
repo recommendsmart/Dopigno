@@ -1,0 +1,144 @@
+<?php
+
+/**
+ * @file
+ * Provides a notification entity type.
+ */
+
+use Drupal\Core\Render\Element;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Entity\EntityStorageException;
+
+/**
+ * Implements hook_theme().
+ */
+function notification_system_database_theme() {
+  return [
+    'notification' => [
+      'render element' => 'elements',
+    ],
+  ];
+}
+
+/**
+ * Prepares variables for notification templates.
+ *
+ * Default template: notification.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the notification information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_notification(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function notification_system_database_cron() {
+  $notificationStorage = \Drupal::entityTypeManager()->getStorage('notification');
+  $logger = \Drupal::logger('notification_system_database');
+
+
+  // Delete expired notification entities.
+  $now = new DrupalDateTime('now');
+  $storage_timezone = new \DateTimezone(DateTimeItemInterface::STORAGE_TIMEZONE);
+  $now->setTimezone($storage_timezone);
+  $now = $now->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT);
+
+  $query = $notificationStorage->getQuery()
+    ->exists('expires')
+    ->condition('expires', $now, '<')
+    ->accessCheck(FALSE);
+
+  $entitiesToDelete = $query->execute();
+
+  if ($entitiesToDelete && is_array($entitiesToDelete) && count($entitiesToDelete) > 0) {
+    try {
+      $notifications = $notificationStorage->loadMultiple($entitiesToDelete);
+      $notificationStorage->delete($notifications);
+      $logger->notice(\Drupal::translation()->formatPlural(count($entitiesToDelete), 'Deleted 1 expired notification.', 'Deleted @count expired notifications.'));
+    } catch (EntityStorageException $e) {
+      $logger->error(t('Expired notifications could not be deleted: :message', [':message' => $e->getMessage()]));
+    }
+  }
+
+
+  // Remove users from notification audience if they have read a notification X days ago.
+  $purgeDays = \Drupal::config('notification_system_database.settings')->get('read_purge_days');
+
+  if ($purgeDays && $purgeDays !== 0) {
+    $query = \Drupal::database()->select('notification_system_database_read', 'n');
+    $query->fields('n', ['id', 'uid', 'entity_id', 'timestamp']);
+    $query->condition('timestamp', \Drupal::time()->getRequestTime() - ($purgeDays * 24*60*60), '<');
+    $result = $query->execute();
+
+    $recordsToDelete = [];
+
+    // TODO: Rework this to remove multiple saves to Notification entity.
+    while($row = $result->fetchObject()) {
+      $notification = $notificationStorage->load($row->entity_id);
+
+      /** @var \Drupal\Core\Field\EntityReferenceFieldItemListInterface $items */
+      $items = $notification->get('user_id');
+
+      for ($i = 0; $i < $items->count(); $i++) {
+        if ($items->get($i)->target_id == $row->uid) {
+          $items->removeItem($i);
+          $i--;
+        }
+      }
+
+      $notification->save();
+
+      $recordsToDelete[] = $row->id;
+    }
+
+    if (count($recordsToDelete) > 0) {
+      \Drupal::database()->delete('notification_system_database_read')
+        ->condition('id', $recordsToDelete, 'IN')
+        ->execute();
+    }
+  }
+
+
+  // Delete notifications which have no audience anymore.
+  $query = $notificationStorage->getQuery()
+    ->notExists('user_id')
+    ->accessCheck(FALSE);
+
+  $entitiesToDelete = $query->execute();
+
+  if ($entitiesToDelete && is_array($entitiesToDelete) && count($entitiesToDelete) > 0) {
+    try {
+      $notifications = $notificationStorage->loadMultiple($entitiesToDelete);
+      $notificationStorage->delete($notifications);
+      $logger->notice(\Drupal::translation()->formatPlural(count($entitiesToDelete), 'Deleted 1 notification which has no audience.', 'Deleted @count notifications which had no audience.'));
+    } catch (EntityStorageException $e) {
+      $logger->error(t('Expired notifications could not be deleted: :message', [':message' => $e->getMessage()]));
+    }
+  }
+}
+
+
+/**
+ * Implements hook_ENTITY_TYPE_delete().
+ */
+function notification_system_database_user_delete(\Drupal\user\UserInterface $user) {
+  // Delete entity reference to user in notification entities.
+  \Drupal::database()->delete('notification__user_id')
+    ->condition('user_id_target_id', $user->id())
+    ->execute();
+
+  \Drupal::database()->delete('notification_system_database_read')
+    ->condition('uid', $user->id())
+    ->execute();
+
+  // TODO: Delete notification bundles of this user.
+}

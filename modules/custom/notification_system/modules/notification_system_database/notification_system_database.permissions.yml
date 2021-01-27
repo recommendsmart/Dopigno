@@ -1,0 +1,5 @@
+administer notification:
+  title: 'Administer notification settings'
+  restrict access: true
+access notification overview:
+  title: 'Access notification overview page'

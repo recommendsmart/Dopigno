@@ -1,0 +1,18 @@
+id: inventory_demo_item_category
+label: 'Inventory demo item category'
+migrate_tags:
+  - 'Inventory demo'
+source:
+  plugin: csv
+  header_row_count: 1
+  path: modules/bs_inventory/modules/inventory_demo/datas/item_category.csv
+  keys:
+    - name
+process:
+  id:
+    plugin: machine_name
+    source: name
+  label: name
+  description: description
+destination:
+  plugin: entity:item_category

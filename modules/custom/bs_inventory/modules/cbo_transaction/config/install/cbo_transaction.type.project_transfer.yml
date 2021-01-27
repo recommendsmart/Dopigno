@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: project_transfer
+label: Project Transfer
+description: 'Transfer to project in project manufacturing'
+source_type: inventory
+action: subinventory_transfer

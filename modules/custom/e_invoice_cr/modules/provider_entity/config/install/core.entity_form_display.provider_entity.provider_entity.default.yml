@@ -1,0 +1,129 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.provider_entity.provider_entity.field_address
+    - field.field.provider_entity.provider_entity.field_commercial_name
+    - field.field.provider_entity.provider_entity.field_email
+    - field.field.provider_entity.provider_entity.field_fax
+    - field.field.provider_entity.provider_entity.field_logo
+    - field.field.provider_entity.provider_entity.field_phone
+    - field.field.provider_entity.provider_entity.field_provider_foreign_id
+    - field.field.provider_entity.provider_entity.field_provider_id
+    - field.field.provider_entity.provider_entity.field_type_id
+  module:
+    - address
+    - field_group
+    - media_library
+    - provider_entity
+    - telephone
+third_party_settings:
+  field_group:
+    group_location:
+      children: {  }
+      parent_name: ''
+      weight: 12
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: Location
+      region: hidden
+id: provider_entity.provider_entity.default
+targetEntityType: provider_entity
+bundle: provider_entity
+mode: default
+content:
+  field_address:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_commercial_name:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_email:
+    weight: 9
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_fax:
+    weight: 8
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
+    region: content
+  field_logo:
+    type: media_library_widget
+    weight: 0
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  field_phone:
+    weight: 7
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
+    region: content
+  field_provider_foreign_id:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_provider_id:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_type_id:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  langcode:
+    type: language_select
+    weight: 4
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  user_id:
+    type: entity_reference_autocomplete
+    weight: 11
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+hidden: {  }

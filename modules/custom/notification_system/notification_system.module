@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function notification_system_theme($existing, $type, $theme, $path) {
+  return [
+    'notification_block' => [
+      'variables' => [
+        'display_mode' => NULL,
+        'show_read' => NULL,
+        'content' => NULL,
+      ],
+    ],
+    'notification_group' => [
+      'variables' => [
+        'group' => NULL,
+        'id' => NULL,
+        'label' => NULL,
+        'description' => NULL,
+        'content' => NULL,
+      ],
+    ],
+    'notification_item' => [
+      'variables' => [
+        'notification' => NULL,
+        'provider' => NULL,
+        'id' => NULL,
+        'type' => NULL,
+        'timestamp' => NULL,
+        'title' => NULL,
+        'body' => NULL,
+        'link' => NULL,
+        'sticky' => NULL,
+        'priority' => NULL,
+        'isRead' => NULL,
+      ],
+    ],
+  ];
+}

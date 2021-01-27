@@ -1,0 +1,106 @@
+<?php
+
+/**
+ * @file
+ * The module that identify physical areas where you store inventory items.
+ */
+
+use Drupal\Core\Database\Query\AlterableInterface;
+use Drupal\Core\Database\Query\SelectInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function locator_entity_base_field_info(EntityTypeInterface $entity_type) {
+  if ($entity_type->id() == 'item') {
+    $fields = [];
+
+    $fields['locator_control'] = BaseFieldDefinition::create('list_string')
+      ->setLabel(t('Locator Control'))
+      ->setRequired(TRUE)
+      ->setSetting('allowed_values', [
+        'no_control' => 'No control',
+        'predefined' => 'Predefined: Define locators before you use them',
+        'dynamic_entry' => 'Dynamic entry: Define locators when you use theme',
+      ])
+      ->setDefaultValue('no_control')
+      ->setDisplayOptions('view', [
+        'type' => 'list_default',
+        'weight' => 0,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayOptions('form', [
+        'type' => 'options_select',
+        'weight' => 0,
+      ])
+      ->setDisplayConfigurable('form', TRUE);
+
+    $fields['restrict_locators'] = BaseFieldDefinition::create('boolean')
+      ->setLabel(t('Restrict Locators'))
+      ->setDescription(t('Whether to restrict transactions of this item to or from a locator list.'))
+      ->setDisplayOptions('view', [
+        'type' => 'boolean',
+        'weight' => 0,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayOptions('form', [
+        'type' => 'boolean_checkbox',
+        'weight' => 0,
+      ])
+      ->setDisplayConfigurable('form', TRUE);
+
+    return $fields;
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter() for item_form.
+ */
+function locator_form_item_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form['locator_control']) {
+    $form['locator_control']['#group'] = 'inventory_group';
+    $form['locator_control']['#states'] = [
+      'visible' => [
+        'checkbox[name="inventory_item"]' => ['checked' => TRUE],
+      ],
+    ];
+  }
+}
+
+/**
+ * Implements hook_query_TAG_alter() for locator_access.
+ */
+function locator_query_locator_access_alter(AlterableInterface $query) {
+  // Read meta-data from query, if provided.
+  if (!$account = $query->getMetaData('account')) {
+    $account = \Drupal::currentUser();
+  }
+
+  if ($account->hasPermission('bypass locator access')) {
+    return;
+  }
+
+  $tables = $query->getTables();
+
+  $alias = 'locator';
+  foreach ($tables as $table_info) {
+    if (!($table_info instanceof SelectInterface)) {
+      if ($table_info['table'] == 'locator') {
+        $alias = $table_info['alias'];
+        break;
+      }
+    }
+  }
+  if (isset($tables['locator']['alias'])) {
+    $alias = $tables['locator']['alias'];
+  }
+
+  if (!isset($tables['subinventory'])) {
+    $query->innerJoin('subinventory', NULL, $alias . '.subinventory = subinventory.sid');
+  }
+
+  cbo_inventory_query_subinventory_access_alter($query);
+}

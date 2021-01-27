@@ -1,0 +1,12 @@
+entity.locator.collection:
+  title: Locator
+  description: 'Define stock locators.'
+  route_name: entity.locator.collection
+  parent: system.admin
+  weight: -10
+
+locator.locator.quantity:
+  title: Locator Quantity
+  description: 'Identify items and their quantities stored in the specified locators.'
+  route_name: locator.locator.quantity
+  parent: system.admin
