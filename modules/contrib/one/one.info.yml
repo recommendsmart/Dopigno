@@ -1,0 +1,12 @@
+name: 'One'
+type: module
+description: 'One Configuration - Mapping content types and fields to known fields like image, date...'
+# core: 8.x
+package: 'One'
+configure: one.settings_form
+
+# Information added by Drupal.org packaging script on 2019-06-02
+version: '8.x-1.0-beta4'
+core: '8.x'
+project: 'one'
+datestamp: 1559480293

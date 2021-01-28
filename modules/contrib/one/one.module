@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains one.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function one_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the one module.
+    case 'help.page.one':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('One Configuration - Mapping content types and fields to known fields like image, date...') . '</p>';
+      return $output;
+
+    default:
+  }
+}

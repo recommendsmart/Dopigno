@@ -1,0 +1,15 @@
+name: 'One API'
+type: module
+description: 'REST API to work with One apps like Android App'
+# core: 8.x
+package: 'One'
+dependencies:
+  - one
+  - rest
+  - views
+
+# Information added by Drupal.org packaging script on 2019-06-02
+version: '8.x-1.0-beta4'
+core: '8.x'
+project: 'one_api'
+datestamp: 1559480288

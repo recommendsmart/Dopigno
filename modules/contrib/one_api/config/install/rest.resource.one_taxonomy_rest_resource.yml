@@ -1,0 +1,18 @@
+uuid: c4642848-8e49-4d38-a515-52ba22ae27d8
+langcode: en
+status: true
+dependencies:
+  module:
+    - one_api
+    - serialization
+    - user
+id: one_taxonomy_rest_resource
+plugin_id: one_taxonomy_rest_resource
+granularity: resource
+configuration:
+  methods:
+    - POST
+  formats:
+    - json
+  authentication:
+    - cookie

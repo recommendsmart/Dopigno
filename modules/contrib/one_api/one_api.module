@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Contains one_api.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function one_api_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the one_api module.
+    case 'help.page.one_api':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('REST API to work with One apps like Android App') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+function one_api_weight_cmp($a_arr, $b_arr){
+    $a = $a_arr["weight"];
+    $b = $b_arr["weight"];
+    if ($a == $b) {
+        return 0;
+    }
+    return ($a < $b) ? -1 : 1;
+}

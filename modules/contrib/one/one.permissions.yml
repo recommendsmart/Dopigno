@@ -1,0 +1,4 @@
+access one settings:
+  description: 'Configure content type & field mappings for One Suite like Android app.'
+  title: 'Access One module Settings'
+  restrict access: TRUE

@@ -1,0 +1,7 @@
+services:
+  # The serializer that will add term name to Taxonomy entities.
+  one_api_normalizer.entity_reference_field_item:
+    class: Drupal\one_api\Normalizer\TermEntityRefFieldItemNormalizer
+    arguments: ['@entity.repository']
+    tags:
+      - { name: normalizer, priority: 10 }

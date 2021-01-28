@@ -1,0 +1,22 @@
+uuid: bd077da0-352c-44fd-b83c-e8cda14a9364
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - one_api
+    - serialization
+    - user
+  enforced:
+    module:
+      - one_api
+id: file.upload
+plugin_id: 'file:upload'
+granularity: resource
+configuration:
+  methods:
+    - POST
+  formats:
+    - json
+  authentication:
+    - cookie

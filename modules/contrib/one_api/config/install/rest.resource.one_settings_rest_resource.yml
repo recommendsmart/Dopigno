@@ -1,0 +1,21 @@
+uuid: 4114b44a-b550-47c2-ac1c-625241c0e4a1
+langcode: en
+status: true
+dependencies:
+  module:
+    - one_api
+    - serialization
+    - user
+  enforced:
+    module:
+      - one_api
+id: one_settings_rest_resource
+plugin_id: one_settings_rest_resource
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - cookie

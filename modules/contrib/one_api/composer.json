@@ -1,0 +1,14 @@
+{
+  "name": "drupal/one_api",
+  "type": "drupal-module",
+  "description": "REST API to work with One apps like Android App",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/one_api",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/one_api",
+    "source": "http://cgit.drupalcode.org/one_api"
+  },
+  "require": { }
+}

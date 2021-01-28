@@ -1,0 +1,11 @@
+
+one.settings_form:
+  path: '/one/settings'
+  defaults:
+    _form: '\Drupal\one\Form\SettingsForm'
+    _title: 'SettingsForm'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _permission: 'access one settings'
+  
