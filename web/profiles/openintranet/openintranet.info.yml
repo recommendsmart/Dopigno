@@ -1,9 +1,0 @@
-name: Open Intranet 1.7.x
-type: profile
-core_version_requirement: ^10 || ^11
-description: 'Open Intranet 1.7 profile.'
-version: '1.7.0'
-distribution:
-  name: Open Intranet
-  install:
-    finish_url: '/welcome'
