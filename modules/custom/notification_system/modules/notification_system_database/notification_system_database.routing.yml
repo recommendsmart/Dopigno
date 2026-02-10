@@ -1,7 +1,0 @@
-entity.notification.settings:
-  path: 'admin/structure/notification'
-  defaults:
-    _form: '\Drupal\notification_system_database\Form\NotificationSettingsForm'
-    _title: 'Notification'
-  requirements:
-    _permission: 'administer notification'

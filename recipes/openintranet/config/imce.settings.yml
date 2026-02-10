@@ -1,0 +1,22 @@
+_core:
+  default_config_hash: 2NA5Ihx8v22TkaCY5xrSQB-8G4f42hYxFG6lQ1X3hKc
+abs_urls: false
+admin_theme: true
+roles_profiles:
+  content_editor:
+    public: member
+  administrator:
+    public: admin
+    private: admin
+  content_editor_basic_page:
+    public: member
+  content_editor_document:
+    public: member
+  content_editor_event:
+    public: member
+  content_editor_knowledge_base:
+    public: member
+  content_editor_news_article:
+    public: member
+  content_editor_webform:
+    public: member

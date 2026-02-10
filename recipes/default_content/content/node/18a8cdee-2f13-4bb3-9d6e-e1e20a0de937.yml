@@ -1,0 +1,71 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 18a8cdee-2f13-4bb3-9d6e-e1e20a0de937
+  bundle: event
+  default_langcode: en
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Cloud Security Meetup'
+  created:
+    -
+      value: 1739958208
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /event/cloud-security-meetup
+      langcode: en
+      pathauto: 1
+  body:
+    -
+      value: '<p>Join us for a discussion on modern cloud security practices, architecture, and common pitfalls.</p>'
+      format: full_html
+      summary: ''
+  field_event_date:
+    -
+      value: '2025-12-14T14:00:00'
+      end_value: '2025-12-14T15:30:00'
+  field_event_location:
+    -
+      langcode: en
+      country_code: PL
+      administrative_area: ''
+      locality: Kraków
+      postal_code: 30-002
+      address_line1: 'Szlak 77'
+  field_event_online:
+    -
+      value: false
+  field_hide_location:
+    -
+      value: false
+  field_map_location:
+    -
+      value: 'POINT (19.9373 50.0614)'
+      geo_type: Point
+      lat: 50.0614
+      lon: 19.9373
+      left: 19.9373
+      top: 50.0614
+      right: 19.9373
+      bottom: 50.0614
+      geohash: u3nkqc8r9cuv
+      latlon: '50.0614,19.9373'

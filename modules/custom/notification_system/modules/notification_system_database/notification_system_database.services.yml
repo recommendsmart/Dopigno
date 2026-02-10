@@ -1,4 +1,0 @@
-services:
-  plugin.manager.db_notification_provider:
-    class: Drupal\notification_system_database\DbNotificationProviderPluginManager
-    parent: default_plugin_manager

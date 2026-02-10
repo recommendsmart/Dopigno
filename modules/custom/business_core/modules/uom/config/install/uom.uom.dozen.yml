@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: dozen
-label: Dozen
-class: quantity
-conversion_factor: 12
-description: ''

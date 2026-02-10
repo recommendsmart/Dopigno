@@ -1,5 +1,0 @@
-services:
-  access_check.item_is_lot_controlled:
-    class: Drupal\item_lot\Access\LotControlStatusCheck
-    tags:
-      - { name: access_check, applies_to: _item_is_lot_controlled }

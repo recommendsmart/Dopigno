@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: kilogram
-label: Kilogram
-class: weight
-conversion_factor: 1000
-description: ''

@@ -1,7 +1,0 @@
-notification_system_dispatch.settings:
-  path: '/admin/config/system/notification-system-dispatch'
-  defaults:
-    _title: 'Notification System Dispatch settings'
-    _form: 'Drupal\notification_system_dispatch\Form\SettingsForm'
-  requirements:
-    _permission: 'administer notification_system_dispatch configuration'

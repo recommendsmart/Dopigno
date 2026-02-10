@@ -1,3 +1,0 @@
-langcode: en
-subject_template: "{% if notifications|length == 1 %}\r\n    New notification: {{ notifications|first.title }}\r\n{% else %}\r\n    {{ notifications|length }} new notifications\r\n{% endif %}"
-body_template: "{% for notification in notifications %}\r\n    <p>{{ notification.timestamp }}</p>\r\n    <p><strong>{{ notification.title }}</strong></p>\r\n    \r\n    {% if notification.body %}\r\n        <p>{{ notification.body }}</p>\r\n    {% endif %}\r\n\r\n    {% if notification.direct_link %}\r\n        <p><a href=\"{{ notification.direct_link }}\">Read more</a></p>    \r\n    {% endif %}\r\n\r\n    {% if not loop.last %}\r\n        <hr>\r\n    {% endif %}\r\n{% endfor %}"

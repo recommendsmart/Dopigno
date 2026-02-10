@@ -1,4 +1,0 @@
-locator.locator.quantity:
-  path: '/admin/locator/quantity'
-  requirements:
-    _permissoin: 'access locator'

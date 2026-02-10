@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: second
-label: Second
-class: time
-conversion_factor: 1
-description: ''

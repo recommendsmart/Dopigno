@@ -1,0 +1,83 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.comments_recent
+    - views.view.content_recent
+    - views.view.user_admin_people
+  module:
+    - layout_builder
+    - views
+id: openintranet
+label: 'Open Intranet Dashboard'
+description: ''
+layout:
+  -
+    layout_id: layout_twocol_section
+    layout_settings:
+      label: 'First row'
+      context_mapping: {  }
+      column_widths: 50-50
+    components:
+      2659a91f-8b97-4b6a-84ca-5670be1aab4d:
+        uuid: 2659a91f-8b97-4b6a-84ca-5670be1aab4d
+        region: first
+        configuration:
+          id: 'views_block:content_recent-block_1'
+          label: ''
+          label_display: visible
+          provider: views
+          context_mapping: {  }
+          views_label: ''
+          items_per_page: 5
+        weight: 0
+        additional: {  }
+      1a19ef2a-bf3e-48fc-9e7e-8e7e24b0e32a:
+        uuid: 1a19ef2a-bf3e-48fc-9e7e-8e7e24b0e32a
+        region: second
+        configuration:
+          id: 'views_block:comments_recent-block_1'
+          label: ''
+          label_display: visible
+          provider: views
+          context_mapping: {  }
+          views_label: ''
+          items_per_page: 5
+        weight: 0
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: layout_twocol_section
+    layout_settings:
+      label: 'Second row'
+      context_mapping: {  }
+      column_widths: 50-50
+    components:
+      bd688e4e-5929-42d4-93ae-057eb237762e:
+        uuid: bd688e4e-5929-42d4-93ae-057eb237762e
+        region: second
+        configuration:
+          id: 'views_block:user_admin_people-block_2'
+          label: ''
+          label_display: visible
+          provider: views
+          context_mapping: {  }
+          views_label: ''
+          items_per_page: 5
+        weight: 0
+        additional: {  }
+      a81cc662-50fa-4aaf-857c-13dc56c821a2:
+        uuid: a81cc662-50fa-4aaf-857c-13dc56c821a2
+        region: first
+        configuration:
+          id: 'views_block:user_admin_people-block_1'
+          label: ''
+          label_display: visible
+          provider: views
+          context_mapping: {  }
+          views_label: ''
+          items_per_page: 5
+        weight: 0
+        additional: {  }
+    third_party_settings: {  }
+weight: 0

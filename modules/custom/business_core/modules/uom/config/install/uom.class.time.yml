@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: time
-label: Time
-base_uom: second
-description: ''

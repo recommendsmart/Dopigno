@@ -1,0 +1,37 @@
+global-styling:
+  version: VERSION
+  js:
+    js/popper.min.js: { weight: -49 }
+    js/bootstrap.min.js: {}
+    js/custom.js: {}
+    js/multi-level-menu.js: {}
+    js/toast.js: {}
+    js/dropdown-menu.js: {}
+  css:
+    component:
+      css/style.min.css: {}
+    theme:
+      css/style.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/once
+
+search-results:
+  js:
+    js/search-results.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+    - core/once
+
+search-book:
+    js:
+        js/search-book.js: {}
+        js/navigation-book.js: {}
+    dependencies:
+        - core/drupal
+        - core/jquery
+        - core/jquery.once
+        - core/once

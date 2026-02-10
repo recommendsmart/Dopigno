@@ -1,0 +1,9 @@
+_core:
+  default_config_hash: F6gp1fQb1oABiagpESXFjiTJiNH3COB9VBxLHcB98fg
+logo:
+  provider: default
+  path: ''
+  max:
+    filesize: 1048576
+    height: 40
+    width: 40

@@ -1,7 +1,0 @@
-block.settings.notification_system_notifications:
-  type: block_settings
-  label: 'Notifications block'
-  mapping:
-    display_mode:
-      type: string
-      label: Display Mode

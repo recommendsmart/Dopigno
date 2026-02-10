@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.user_profile
+  module:
+    - system
+    - views
+  theme:
+    - openintranet_theme
+id: user_profile_block_about_me
+theme: openintranet_theme
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:user_profile-block_about_me'
+settings:
+  id: 'views_block:user_profile-block_about_me'
+  label: 'About me'
+  label_display: visible
+  provider: views
+  views_label: 'About me'
+  items_per_page: null
+  context_mapping: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/users/*'

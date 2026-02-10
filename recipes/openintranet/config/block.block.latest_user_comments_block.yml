@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.latest_user_comments
+  module:
+    - system
+    - views
+  theme:
+    - openintranet_theme
+id: latest_user_comments_block
+theme: openintranet_theme
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:latest_user_comments-block_1'
+settings:
+  id: 'views_block:latest_user_comments-block_1'
+  label: ''
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: null
+  context_mapping: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/users/*'

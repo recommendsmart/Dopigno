@@ -1,5 +1,0 @@
-entity.notification_group.add_form:
-  route_name: entity.notification_group.add_form
-  title: 'Add Notification Group'
-  appears_on:
-    - entity.notification_group.collection

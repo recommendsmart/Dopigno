@@ -1,9 +1,0 @@
-name: Opigno Alter Entity Autocomplete
-description: The module alters entity autocomplete suggestion list.
-type: module
-core: 8.x
-
-# Information added by Drupal.org packaging script on 2020-08-18
-version: '8.x-1.12'
-project: 'opigno_learning_path'
-datestamp: 1597749939

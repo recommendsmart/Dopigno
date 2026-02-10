@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: volume
-label: Volume
-base_uom: cubic_inches
-description: ''

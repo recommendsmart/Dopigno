@@ -1,5 +1,0 @@
-administer locations:
-  title: 'Administer locations'
-  restrict access: true
-access location:
-  title: 'View location'

@@ -1,8 +1,0 @@
-name: Provider entity
-type: module
-description: This module provides the provider entity for e-invoice.
-core: 8.x
-package: AGERP
-dependencies:
-  - e_invoice_cr
-  - media

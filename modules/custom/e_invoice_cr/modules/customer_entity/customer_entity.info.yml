@@ -1,9 +1,0 @@
-name: Customer entity
-type: module
-description: This module provides the customer entity for e-invoice.
-core: 8.x
-package: AGERP
-dependencies:
-  - e_invoice_cr
-  - address
-  

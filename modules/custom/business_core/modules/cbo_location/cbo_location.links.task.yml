@@ -1,8 +1,0 @@
-entity.location.canonical:
-  route_name: entity.location.canonical
-  base_route: entity.location.canonical
-  title: View
-entity.location.edit_form:
-  route_name: entity.location.edit_form
-  base_route: entity.location.canonical
-  title: Edit
