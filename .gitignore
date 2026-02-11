@@ -95,5 +95,3 @@
 
 # Ignore .env files as they are personal
 #/.env
-
-/patches.lock.json
