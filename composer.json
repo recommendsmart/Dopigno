@@ -1,51 +1,41 @@
 {
     "name": "drupal/cms",
-    "version": "1.0.1",
-    "description": "Drupal with a bunch of useful stuff.",
+    "version": "2.0.0",
+    "description": "Drupal CMS is a ready-to-use platform built on Drupal core, offering smart defaults to get started quickly and enterprise-grade tools for marketers, designers, and content creators.",
     "type": "project",
     "license": "GPL-2.0-or-later",
-    "homepage": "https://www.drupal.org/project/drupal",
+    "homepage": "https://www.drupal.org/project/cms",
     "support": {
-        "docs": "https://drupal.org/docs/user_guide/en/index.html",
+        "docs": "https://new.drupal.org/docs/drupal-cms",
         "chat": "https://drupal.org/node/314178"
     },
     "repositories": {
-        "upstream-configuration": {
-            "type": "path",
-            "url": "upstream-configuration"
-        },
         "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         }
     },
     "require": {
+        "composer/composer": "^2.8",
         "composer/installers": "^2.3",
-        "drupal/core-composer-scaffold": "^11.1.1",
-        "drupal/core-project-message": "^11.1.1",
-        "drupal/core-recommended": "^11.1.1",
-        "drupal/drupal_cms_accessibility_tools": "~1.0.0",
-        "drupal/drupal_cms_ai": "~1.0.1",
-        "drupal/drupal_cms_analytics": "~1.0.0",
-        "drupal/drupal_cms_blog": "~1.0.0",
-        "drupal/drupal_cms_case_study": "~1.0.0",
-        "drupal/drupal_cms_events": "~1.0.0",
-        "drupal/drupal_cms_forms": "~1.0.0",
-        "drupal/drupal_cms_news": "~1.0.1",
-        "drupal/drupal_cms_page": "~1.0.0",
-        "drupal/drupal_cms_person": "~1.0.1",
-        "drupal/drupal_cms_project": "~1.0.0",
-        "drupal/drupal_cms_seo_tools": "~1.0.1",
-        "drupal/drupal_cms_starter": "~1.0.0",
-        "drupal/group": "^3.3",
-        "drupal/group_term": "^4.1",
-        "drupal/pantheon_advanced_page_cache": "^2.3.1",
-        "drupal/permissions_by_term": "^3.1",
-        "drupal/project_browser": "@alpha",
-        "drupal/webform": "@beta",
-        "drush/drush": "^13",
-        "pantheon-systems/drupal-integrations": "^11.1",
-        "pantheon-upstreams/upstream-configuration": "dev-main"
+        "drupal/byte": "^1",
+        "drupal/core-composer-scaffold": "^11.3",
+        "drupal/core-project-message": "^11.3",
+        "drupal/core-recipe-unpack": "^11.3",
+        "drupal/core-recommended": "^11.3",
+        "drupal/core-vendor-hardening": "^11.3",
+        "drupal/drupal_cms_accessibility_tools": "^2",
+        "drupal/drupal_cms_ai": "^2",
+        "drupal/drupal_cms_forms": "^2",
+        "drupal/drupal_cms_google_analytics": "^2",
+        "drupal/drupal_cms_seo_tools": "^2",
+        "drupal/drupal_cms_starter": "^2",
+        "drupal/recipe_installer_kit": "^1.0.4",
+        "drupal/ui_icons": "*",
+        "drupal/webform": "@beta"
+    },
+    "require-dev": {
+        "drush/drush": "^13.7"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -57,49 +47,43 @@
             "composer/installers": true,
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
-            "php-http/discovery": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "tbachert/spi": true,
-            "phpstan/extension-installer": true
+            "drupal/core-recipe-unpack": true,
+            "drupal/core-vendor-hardening": true,
+            "php-http/discovery": true
         },
+        "bin-dir": "vendor/bin",
         "sort-packages": true,
-        "optimize-autoloader": true,
-        "platform": {
-            "php": "8.3.14"
-        }
+        "optimize-autoloader": true
     },
     "extra": {
         "drupal-scaffold": {
-            "file-mapping": {
-                "[project-root]/.editorconfig": false,
-                "[project-root]/pantheon.upstream.yml": false,
-                "[project-root]/.gitattributes": false
-            },
             "locations": {
                 "web-root": "web/"
-            }
+            },
+            "file-mapping": {
+                "[web-root]/example.gitignore": false
+            },
+            "allowed-packages": [
+                "drupal/drupal_cms_seo_tools"
+            ]
         },
         "installer-paths": {
-            "web/private/scripts/quicksilver/{$name}/": ["type:quicksilver-script"],
             "web/core": ["type:drupal-core"],
             "web/libraries/{$name}": ["type:drupal-library"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
+            "./drush/Commands/contrib/{$name}": ["type:drupal-drush"],
             "web/modules/custom/{$name}": ["type:drupal-custom-module"],
             "web/profiles/custom/{$name}": ["type:drupal-custom-profile"],
-            "recipes/{$name}": ["type:drupal-recipe"],
+            "./recipes/{$name}": ["type:drupal-recipe"],
             "web/themes/custom/{$name}": ["type:drupal-custom-theme"]
         },
         "drupal-core-project-message": {
-            "include-keys": [
-                "homepage",
-                "support"
-            ],
+            "include-keys": ["homepage", "support"],
             "post-create-project-cmd-message": [
                 "<bg=blue;fg=white>                                                   </>",
-                "<bg=blue;fg=white>  Congratulations, you\u2019ve installed Drupal CMS!    </>",
+                "<bg=blue;fg=white>  Congratulations, you’ve installed Drupal CMS!    </>",
                 "<bg=blue;fg=white>                                                   </>",
                 "",
                 "<bg=yellow;fg=black>Next steps</>:",
@@ -108,13 +92,13 @@
                 "  * Get involved with the Drupal community: https://drupal.org/getting-involved"
             ]
         },
-        "enable-patching": true
-    },
-    "autoload": {
-        "classmap": ["upstream-configuration/scripts/ComposerScripts.php"]
+        "drupal-core-vendor-hardening": {
+            "composer/composer": false
+        }
     },
     "scripts": {
-        "pre-update-cmd": ["DrupalComposerManaged\\ComposerScripts::preUpdate"],
-        "post-update-cmd": ["DrupalComposerManaged\\ComposerScripts::postUpdate"]
+        "post-update-cmd": [
+            "@php -r \"@unlink('vendor/bin/composer');\""
+        ]
     }
 }

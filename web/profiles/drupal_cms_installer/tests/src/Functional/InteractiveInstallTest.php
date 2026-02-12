@@ -6,18 +6,20 @@ namespace Drupal\Tests\drupal_cms_installer\Functional;
 
 use Drupal\Core\Extension\ExtensionList;
 use Drupal\Core\Extension\ModuleExtensionList;
-use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Extension\ThemeExtensionList;
 use Drupal\Core\Extension\ThemeHandlerInterface;
-use Drupal\Core\State\StateInterface;
-use Drupal\drupal_cms_installer\RecipeAppliedSubscriber;
 use Drupal\FunctionalTests\Installer\InstallerTestBase;
+use Drupal\user\Entity\Role;
 use Drupal\user\Entity\User;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\IgnoreDeprecations;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-/**
- * @group drupal_cms_installer
- */
+#[Group('drupal_cms_installer')]
+#[Group('drupal_cms')]
+#[IgnoreDeprecations]
+#[RunTestsInSeparateProcesses]
 class InteractiveInstallTest extends InstallerTestBase {
 
   /**
@@ -30,17 +32,9 @@ class InteractiveInstallTest extends InstallerTestBase {
    */
   protected function setUpSettings(): void {
     $assert_session = $this->assertSession();
-    $assert_session->buttonExists('Skip this step');
 
-    // Choose all the add-ons!
-    $page = $this->getSession()->getPage();
-    $optional_recipes = $page->findAll('css', 'input[name^="add_ons["]');
-    $this->assertNotEmpty($optional_recipes);
-    array_walk($optional_recipes, fn ($checkbox) => $checkbox->check());
-    $page->pressButton('Next');
-
-    // Now we should be asked for the site name, with a default value in place
-    // for the truly lazy.
+    // We should be asked for the site name, with a default value in place for
+    // the truly lazy.
     $assert_session->pageTextContains('Give your site a name');
     $site_name_field = $assert_session->fieldExists('Site name');
     $this->assertTrue($site_name_field->hasAttribute('required'));
@@ -48,6 +42,11 @@ class InteractiveInstallTest extends InstallerTestBase {
     // We have to use submitForm() to ensure that batch operations, redirects,
     // and so forth in the remaining install tasks get done.
     $this->submitForm(['Site name' => 'Installer Test'], 'Next');
+
+    // The next step asks you to choose a site template -- choose the blank
+    // starter for now.
+    $assert_session->pageTextContains('Choose a site template');
+    $this->submitForm(['add_ons' => 'drupal_cms_starter'], 'Next');
 
     // Proceed to the database settings form.
     parent::setUpSettings();
@@ -106,33 +105,32 @@ class InteractiveInstallTest extends InstallerTestBase {
    * Tests basic expectations of a successful Drupal CMS install.
    */
   public function testPostInstallState(): void {
-    // The installer's list of applied recipes should be gone.
-    $this->assertNull($this->container->get(StateInterface::class)->get(RecipeAppliedSubscriber::STATE_KEY));
+    // The administrator role should exist.
+    $this->assertInstanceOf(Role::class, Role::load('administrator'));
 
     // The site name and site-wide email address should have been set.
-    // @see \Drupal\drupal_cms_installer\Form\SiteNameForm
+    // @see \Drupal\RecipeKit\Installer\Form\SiteNameForm
     $site_config = $this->config('system.site');
     $this->assertSame('Installer Test', $site_config->get('name'));
     $this->assertSame("hello@good.bye", $site_config->get('mail'));
 
     // Update Status should be installed, and user 1 should be getting its
     // notifications.
-    $this->assertTrue($this->container->get(ModuleHandlerInterface::class)->moduleExists('update'));
+    $this->assertTrue(\Drupal::moduleHandler()->moduleExists('update'));
     $account = User::load(1);
     $this->assertContains($account->getEmail(), $this->config('update.settings')->get('notification.emails'));
     $this->assertContains('administrator', $account->getRoles());
 
     // The installer should have uninstalled itself.
-    // @see drupal_cms_installer_uninstall_myself()
-    $this->assertFalse($this->container->getParameter('install_profile'));
+    $this->assertFalse(\Drupal::installProfile());
+    // The installer's theme should not be installed.
+    $this->assertArrayNotHasKey('drupal_cms_installer_theme', $this->config('core.extension')->get('theme'));
 
     // Ensure that there are non-core extensions installed, which proves that
     // recipes were applied during site installation.
-    $this->assertContribInstalled($this->container->get(ModuleExtensionList::class));
-    $this->assertContribInstalled($this->container->get(ThemeExtensionList::class));
+    $this->assertContribInstalled(\Drupal::service(ModuleExtensionList::class));
+    $this->assertContribInstalled(\Drupal::service(ThemeExtensionList::class));
 
-    // Antibot prevents non-JS functional tests from logging in, so disable it.
-    $this->config('antibot.settings')->set('form_ids', [])->save();
     // Log out so we can test that user 1's credentials were properly saved.
     $this->drupalLogout();
 
